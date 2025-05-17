@@ -1,9 +1,10 @@
 import { useState, useEffect } from 'react'
 import './App.css'
-import monstersData from './MHIcon/monsters_mh_wilds_large_only.json'
+//import monstersData from './MHIcon/monsters_mh_wilds_large_only.json'
 import Filtrar from './components/Filtrar.jsx'
 import Monstruo from './components/Monstruo.jsx'
 import Aleatorizar from './components/Aleatorizar.jsx'
+import { getAllNotes } from './services/getAllNotes.js'
 
 function App() {
 
@@ -13,13 +14,15 @@ function App() {
   const [indice, setIndice] = useState(null)
 
   useEffect(() => {
-    setMonstruos(monstersData.monsters)
+    getAllNotes().then(data => {
+      setMonstruos(data)
+    })
   }, []);
-
+{/*
   console.log('Aleatorio', monstruoAleatorio);
   console.log('Busqueda', busqueda);
   console.log('Indice', indice);
-  
+*/}
   return (
     <>
       <div>
